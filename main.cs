@@ -23,13 +23,15 @@ class Program
         JsonNode tempNode = mainNode!["temp"]!;
         string temp = tempNode.ToString();
         double finalTemp = Convert.ToDouble(temp) - 273.6;
-        Console.WriteLine("Temperature: " + finalTemp.ToString("0.0") + "° C");
+        // Given text on terminal
+        Console.WriteLine("Temperature: " + finalTemp.ToString("0.0") + "°C");
+        // Declares for file
         string text = "Total: " + finalTemp.ToString("0.0");
+        // Makes file, added code
         await File.WriteAllTextAsync("WriteText.txt", text);
-            Console.WriteLine("File Updated...");
-            Console.WriteLine("");
+        Console.WriteLine("File Updated...");
+        Console.WriteLine("");
 
-            var someText = await File.ReadAllTextAsync(@"WriteText.txt");
         Console.WriteLine("\nDone.");
     }
 }
