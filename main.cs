@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text.Json.Nodes;
+using System.IO;
 
 class Program
 {
@@ -23,6 +24,12 @@ class Program
         string temp = tempNode.ToString();
         double finalTemp = Convert.ToDouble(temp) - 273.6;
         Console.WriteLine("Temperature: " + finalTemp.ToString("0.0") + "° C");
+        string text = "Total: " + finalTemp.ToString("0.0");
+        await File.WriteAllTextAsync("WriteText.txt", text);
+            Console.WriteLine("File Updated...");
+            Console.WriteLine("");
+
+            var someText = await File.ReadAllTextAsync(@"WriteText.txt");
         Console.WriteLine("\nDone.");
     }
 }
